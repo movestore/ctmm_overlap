@@ -4,6 +4,13 @@ library(tidyr)
 library(tibble)
 
 rFunction <- function(data, method = "Bhattacharyya") {
+  if (length(data[[2]]) < 2) {
+    stop(
+      "The input must contain at least 2 individuals to ",
+      "measure home range overlap."
+    )
+  }
+
   ov <- overlap(data[[2]], method = method)
   
   res <- apply(ov$CI, 1:2, function(x) {
