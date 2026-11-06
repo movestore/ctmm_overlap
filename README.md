@@ -28,10 +28,20 @@ Calculate the overlap (i.e., similarity) between two or more distributions (home
 
 *Example:* `rest_overview.csv`: csv-file with Table of all rest site properties
 
-### Settings 
-*Please list and define all settings/parameters that the App requires to be set by the App user, if necessary including their unit.*
+### Settings
+**Overlap method (`method`):** How to measure the overlap between two home
+ranges. Both measures range from 0 (the home ranges share no area) to 1 (the
+home ranges are identical). Default: `Bhattacharyya`.
 
-*Example:* `Radius of resting site` (radius): Defined radius the animal has to stay in for a given duration of time for it to be considered resting site. Unit: `metres`.
+- `Bhattacharyya`: the Bhattacharyya coefficient, the standard measure of how
+  similar two home ranges are (Winner et al., 2018).
+- `Encounter`: a measure proportional to the probability that two animals
+  moving independently of each other meet, related to the utilization
+  distribution overlap index (UDOI; Tilberg & Dixon, 2022).
+
+See the ctmm documentation of
+[`overlap()`](https://ctmm-initiative.github.io/ctmm/reference/overlap.html)
+for details.
 
 ### Most common errors
 *Please describe shortly what most common errors of the App can be, how they occur and best ways of solving them.*

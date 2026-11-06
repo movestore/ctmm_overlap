@@ -1,6 +1,24 @@
 {
   "version": "1.2",
-  "settings": [],
+  "settings": [
+    {
+      "id": "method",
+      "name": "Overlap method",
+      "description": "Method to use to quantify the overlap between two home ranges. 'Bhattacharyya' is the standard measure of overlap between two distributions. 'Encounter' is based on the probability that two animals meet; its numerator is proportional to the encounter probability and the utilization distribution overlap index (UDOI). Both range from 0 (no shared area) to 1 (identical home ranges).",
+      "defaultValue": "Bhattacharyya",
+      "type": "RADIOBUTTONS",
+      "options": [
+        {
+          "value": "Bhattacharyya",
+          "displayText": "Bhattacharyya (standard overlap)"
+        },
+        {
+          "value": "Encounter",
+          "displayText": "Encounter (UDOI)"
+        }
+      ]
+    }
+  ],
   "dependencies": {
     "R": [
       {

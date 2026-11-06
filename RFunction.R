@@ -3,11 +3,9 @@ library(dplyr)
 library(tidyr)
 library(tibble)
 
-rFunction = function(data) {
+rFunction <- function(data, method = "Bhattacharyya") {
+  ov <- overlap(data[[2]], method = method)
   
-  ov <- overlap(data[[2]]) 
-  
-  ov <- overlap(data[[2]], method = "Encounter") 
   res <- apply(ov$CI, 1:2, function(x) {
     x <- format(round(x, 2), nsmall = 2)
     paste0(x[2], " (", x[1], " - ", x[3], ")")
