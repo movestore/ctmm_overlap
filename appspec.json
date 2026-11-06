@@ -5,6 +5,15 @@
     "R": [
       {
         "name": "ctmm"
+      },
+      {
+        "name": "dplyr"
+      },
+      {
+        "name": "tibble"
+      },
+      {
+        "name": "tidyr"
       }
     ]
   },
