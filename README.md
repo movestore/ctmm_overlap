@@ -11,9 +11,17 @@ Calculate the overlap (i.e., similarity) between two or more distributions (home
 ## Documentation
 *Enter here a detailed description of your App. What is it intended to be used for. Which steps of analyses are performed and how. Please be explicit about any detail that is important for use and understanding of the App and its outcomes.*
 
-### Input data
+### Input type
+`ctmm UD with Data and Model`: a list with three elements, as produced by the
+*Autocorrelated Kernel Density Estimate (aKDE)* App:
 
-### Output data
+1. `model`: a list containing the selected `ctmm` model for each animal.
+2. `uds`: a list containing the aKDE utilization distribution (UD, an object
+   of class `UD`) for each animal.
+3. `data`: the tracking data (an object of type `telemetry.list`).
+
+### Output type
+`ctmm UD with Data and Model`: the input, unchanged.
 
 ### Artefacts
 *If the App creates artefacts (e.g. csv, pdf, jpeg, shapefiles, etc), please list them here and describe each.*
