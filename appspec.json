@@ -1,23 +1,54 @@
 {
+  "version": "1.2",
+  "settings": [
+    {
+      "id": "method",
+      "name": "Overlap method",
+      "description": "Method to use to quantify the overlap between two home ranges. 'Bhattacharyya' is the standard measure of overlap between two distributions. 'Encounter' is based on the probability that two animals meet; its numerator is proportional to the encounter probability and the utilization distribution overlap index (UDOI). Both range from 0 (no shared area) to 1 (identical home ranges).",
+      "defaultValue": "Bhattacharyya",
+      "type": "RADIOBUTTONS",
+      "options": [
+        {
+          "value": "Bhattacharyya",
+          "displayText": "Bhattacharyya (standard overlap)"
+        },
+        {
+          "value": "Encounter",
+          "displayText": "Encounter (UDOI)"
+        }
+      ]
+    }
+  ],
   "dependencies": {
     "R": [
       {
         "name": "ctmm"
+      },
+      {
+        "name": "dplyr"
+      },
+      {
+        "name": "tibble"
+      },
+      {
+        "name": "tidyr"
       }
     ]
   },
-  "createsArtifacts": true,
   "license": {
     "key": "MIT"
   },
   "language": "eng",
   "keywords": [
-    "ctmm",
-    "akde", 
-    "home range", 
-    "home-range overlap"
+    "home range",
+    "home range overlap",
+    "akde",
+    "bhattacharyya",
+    "encounter",
+    "udoi",
+    "utilization distribution",
+    "ctmm"
   ],
-  
   "people": [
     {
       "firstName": "Marco",
@@ -31,7 +62,7 @@
       "orcid": "0000-0002-3042-5435",
       "affiliation": "Kaldera",
       "affiliationRor": null
-    }, 
+    },
     {
       "firstName": "Johannes",
       "middleInitials": null,
@@ -41,59 +72,49 @@
         "author",
         "creator"
       ],
-      "orcid": "0000-0002-1771-7775" ,
+      "orcid": "0000-0002-1771-7775",
       "affiliation": "University of Goettingen",
       "affiliationRor": "01y9bpm73"
-    }
-  ],
-  "funding": [
+    },
     {
-      "name": "Friends of the North Carolina State",
-      "comment": "grant for App"
-    }
-  ],
-  "references": [
-    {
-      "type": "IsDescribedBy",
-      "note": "Documentation of the `overlap()`-function",
-      "url": "https://ctmm-initiative.github.io/ctmm/reference/overlap.html"
-    }
-  ],
-  "documentation": {
-    "url": "https://github.com/marcosci/ctmm_hroverlap/"
-  }
-  
-  
-  "people": [
-    {
-      "firstName": "Charles",
+      "firstName": "Finn",
       "middleInitials": null,
-      "lastName": "Darwin",
-      "email": "creator@example.com",
+      "lastName": "Roberts",
+      "email": "froberts@ab.mpg.de",
       "roles": [
-        "author",
-        "creator"
+        "contributor"
       ],
-      "orcid": null,
-      "affiliation": null,
-      "affiliationRor": null
+      "orcid": "0009-0002-6157-3542",
+      "affiliation": "Max Planck Institute of Animal Behavior",
+      "affiliationRor": "https://ror.org/026stee22"
     }
   ],
   "funding": [
     {
-      "name": "funder name",
-      "comment": "grant for App"
+      "name": "NSF award 1914928",
+      "comment": "Grant for developing the app"
     }
   ],
   "references": [
     {
       "type": "IsDescribedBy",
-      "note": "Darwin, C. 1900. The creation. Journal XY. 1-2",
-      "url": "https://anylink.xyz"
+      "note": "Winner, K., Noonan, M. J., Fleming, C. H., Olson, K. A., Mueller, T., Sheldon, D., & Calabrese, J. M. (2018). Statistical inference for home range overlap. Methods in Ecology and Evolution, 9(7), 1679-1691.",
+      "url": "https://doi.org/10.1111/2041-210X.13027"
+    },
+    {
+      "type": "IsDescribedBy",
+      "note": "Tilberg, M., & Dixon, P. M. (2022). Statistical inference for the utilization distribution overlap index (UDOI). Methods in Ecology and Evolution, 13(5), 1082-1092.",
+      "url": "https://doi.org/10.1111/2041-210X.13813"
+    },
+    {
+      "type": "IsDocumentedBy",
+      "note": "Documentation of the `overlap()` function",
+      "url": "https://ctmm-initiative.github.io/ctmm/reference/overlap.html"
+    },
+    {
+      "type": "Requires",
+      "note": "Calabrese, J. M., Fleming, C. H., & Gurarie, E. (2016). ctmm: An R package for analyzing animal relocation data as a continuous-time stochastic process. Methods in Ecology and Evolution, 7(9), 1124-1132.",
+      "url": "https://CRAN.R-project.org/package=ctmm"
     }
-  ],
-  "documentation": {
-    "url": "https://github.com/yourAccount/my-app/README.md"
-  }
+  ]
 }
-
