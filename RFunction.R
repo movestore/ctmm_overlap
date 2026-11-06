@@ -12,27 +12,48 @@ rFunction <- function(data, method = "Bhattacharyya") {
   }
 
   ov <- overlap(data[[2]], method = method)
-  
-  res <- apply(ov$CI, 1:2, function(x) {
-    x <- format(round(x, 2), nsmall = 2)
-    paste0(x[2], " (", x[1], " - ", x[3], ")")
-  })
-  capture.output(res, file = appArtifactPath("overlap_summary_matrix.txt"))
-  
-  
-  # Second artefact
-  res <- bind_cols(
-    ov$CI[, , 1] |> as.data.frame() |> rownames_to_column(var = "from") |> 
-      pivot_longer(-from, names_to = "to", values_to = "low"),
-    ov$CI[, , 2] |> as.data.frame() |> rownames_to_column(var = "from") |> 
-      pivot_longer(-from, names_to = "to", values_to = "est") |> select(est),
-    ov$CI[, , 3] |> as.data.frame() |> rownames_to_column(var = "from") |> 
-      pivot_longer(-from, names_to = "to", values_to = "high") |> select(high)
+
+  # Round to 4 digits to make output more legible.
+  ov$CI <- round(ov$CI, 4)
+
+  # Matrix of the overlap estimates between each pair of individuals
+  est <- ov$CI[, , 2]
+  res <- data.frame(individual = rownames(est), est, check.names = FALSE)
+  write.csv(
+    res,
+    file = appArtifactPath("overlap_summary_matrix.csv"),
+    row.names = FALSE
   )
-  write.csv(res, file = appArtifactPath("overlap_summary_long.txt"))
+
+  # Long-format table of overlap estimates and CIs for each pair of animals
+  ids <- rownames(ov$CI)
   
+  res <- bind_cols(
+    ov$CI[, , 1] |> 
+      as.data.frame() |> 
+      rownames_to_column(var = "from") |> 
+      pivot_longer(-from, names_to = "to", values_to = "low"),
+    ov$CI[, , 2] |> 
+      as.data.frame() |> 
+      rownames_to_column(var = "from") |> 
+      pivot_longer(-from, names_to = "to", values_to = "est") |> 
+      select(est),
+    ov$CI[, , 3] |> 
+      as.data.frame() |> 
+      rownames_to_column(var = "from") |> 
+      pivot_longer(-from, names_to = "to", values_to = "high") |> 
+      select(high)
+  )
   
+  # Remove duplicated combinations of animals so each pair appears once
+  res <- res |>
+    filter(match(from, ids) < match(to, ids))
   
+  write.csv(
+    res,
+    file = appArtifactPath("overlap_summary_long.csv"),
+    row.names = FALSE
+  )
+
   return(data)
-  
 }
