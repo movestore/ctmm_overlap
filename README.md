@@ -48,7 +48,7 @@ The input must contain at least 2 animals.
 
 ### Artefacts
 `overlap_summary_matrix.csv`: a table of the overlap estimates, with one row
-and one column per animal. The first column (`individual`) gives the name of
+and one column per animal. The first column (`id`) gives the name of
 the animal for each row. Each cell contains the estimated overlap between the
 animals of its row and column. The table is symmetric, and the diagonal
 (each animal compared with itself) is always 1. Confidence intervals are

@@ -18,7 +18,7 @@ rFunction <- function(data, method = "Bhattacharyya") {
 
   # Matrix of the overlap estimates between each pair of individuals
   est <- ov$CI[, , 2]
-  res <- data.frame(individual = rownames(est), est, check.names = FALSE)
+  res <- data.frame(id = rownames(est), est, check.names = FALSE)
   write.csv(
     res,
     file = appArtifactPath("overlap_summary_matrix.csv"),
