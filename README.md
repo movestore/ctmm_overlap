@@ -15,7 +15,7 @@ The overlap estimates range from 0 (the home ranges share no area) to 1
 (the home ranges are identical). Each estimate includes a 95% confidence
 interval.
 
-This App is part of a ctmm workflow. You must run the *Autocorrelated
+This App is part of a ctmm Workflow. You must run the *Autocorrelated
 Kernel Density Estimate (aKDE)* App before this one, as its output is
 necessary to calculate the overlap.
 
